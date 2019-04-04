@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -16,22 +15,26 @@ scanf("%d", &n);
     switch (n){
         case 1:
             printf("Please write the message you should like to encrypt:\n", &rotmesg);
-            scanf("%s", &rotmesg);
-            printf("%s\n", rotmesg);
+            scanf("\n");
+            scanf ("%[^\n]%*c", &rotmesg);
+            printf("%s", rotmesg);
     break;
         case 2:
             printf("Please write the message you should like to decrypt:\n", &rotmesg);
-            scanf("%s", &rotmesg);
+            scanf("\n");
+            scanf ("%[^\n]%*c", &rotmesg);
             printf("%s\n", rotmesg);
     break;
         case 3:
             printf("Please write the message you should like to encrypt:\n", &submesg);
-            scanf("%s", &submesg);
+            scanf("\n");
+             scanf ("%[^\n]%*c", &submesg);
             printf("%s\n", submesg);
     break;
         case 4:
-            printf("Please write the message you should like to decrypt:\n", &submesg); 
-            scanf("%s", &submesg);
+            printf("Please write the message you should like to decrypt:\n", &submesg);
+            scanf("\n");
+             scanf ("%[^\n]%*c", &submesg);
             printf("%s\n", &submesg);
     break;
         case 5:
