@@ -16,9 +16,12 @@ scanf("%d", &n);
         case 1:
             printf("Please write the message you should like to encrypt:\n", &rotmesg);
             scanf("\n");
-            scanf ("%[^\n]%*c", &rotmesg);
+            scanf (" %[^\n]s", rotmesg);
             printf("%s", rotmesg);
-    break;
+            printf("would you like to decrypt this code?\nYES:1\nNO:2\n", &f);
+            scanf("%d", f);
+            printf("%d", f);
+            if(f==2){exit(0);}
         case 2:
             printf("Please write the message you should like to decrypt:\n", &rotmesg);
             scanf("\n");
@@ -48,3 +51,4 @@ scanf("%d", &n);
 }
  return 0;
 }
+
