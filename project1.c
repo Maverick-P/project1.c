@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+char CaesarCipher(char[], int i);
+
 int main()
 {
 int n = 0;
@@ -15,9 +17,7 @@ scanf("%d", &n);
     switch (n){
         case 1:
             printf("Please write the message you should like to encrypt:\n", &rotmesg);
-            scanf("\n");
-            scanf (" %[^\n]s", rotmesg);
-            printf("%s", rotmesg);
+            printf("%s", CaesarCipher(&rotmesg, 3));
             printf("would you like to decrypt this code?\nYES:1\nNO:2\n", &f);
             scanf("%d", f);
             printf("%d", f);
@@ -52,3 +52,8 @@ scanf("%d", &n);
  return 0;
 }
 
+char CaesarCipher(char[], int i)
+{
+    i=3;
+    return i;
+}
