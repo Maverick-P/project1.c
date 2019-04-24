@@ -8,8 +8,8 @@ int main()
 {
 int n = 0;
 int f = 0;
-char rotmesg[100];
-char submesg[100];
+int j;
+char code[1000], ln;
 while(n < 10)
 {
 printf("Please choose your type of service:\nRotation encryption: 1 \nRotation decryption: 2\nSubstitution encryption: 3\nSubstitution decryption: 4\nEXIT: 5\n", &n);
@@ -17,7 +17,37 @@ scanf("%d", &n);
     switch (n){
         case 1:
             printf("Please write the message you should like to encrypt:\n", &rotmesg);
-            printf("%s", CaesarCipher(&rotmesg, 3));
+	gets(code);
+	UCASE(code);
+	for(j = 0; code[j] != '\0'; ++j){
+		ln = code[j];
+		
+		if(ln >= 'A' && ln <= 'Z'){
+			ln = ln + 10;
+			
+			if(ln > 'Z'){
+				ln = ln - 'Z' + 'A' - 1;
+			}
+			
+			code[j] = ln;
+		}
+	}
+	
+	printf("Encrypted message: %s", (code));
+	
+	return 0;
+}
+
+void UCASE(char s[]) {
+   int c = 0;
+   
+   while (s[c] != '\0') {
+      if (s[c] >= 'a' && s[c] <= 'z') {
+         s[c] = s[c] - 32;
+      }
+      c++;
+   }
+}
             printf("would you like to decrypt this code?\nYES:1\nNO:2\n", &f);
             scanf("%d", f);
             printf("%d", f);
