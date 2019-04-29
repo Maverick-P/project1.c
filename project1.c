@@ -1,13 +1,14 @@
-#include<stdio.h>
-#include<string.h>
-	
 void UCASE(char []);
 	
 	int main()
 	{
 	    char code[1000], b;                                    // defining variables 
-		int j;
+		int j, n = 0;
 		    printf("This program performs Caesar cipher encryption and decrytion\nas well as substitution cipher encrytion and decryption\nPLEASE NOTE ALL WORDS ENTERED MANUALLY MUST BE IN LOWERCSASE\n\n" );
+		    printf("Menu\nCaesar cipher encryption and decryption: 1\nSubstitution cipher Encryption and Decryption: 2\nUnknown Caesar cipher decryption: 3\nUnknown substitution cipher decryption:4\n\nPlease enter your choice:  \n", n);
+		    gets(n);
+		    switch(n){
+		        case 1:
 		    printf("Please enter a message to encrypt with a Caesar cipher: "); // general introduction to the program
 		        gets(code);                                             // takes input to be encrypted
 		        UCASE(code);                                            // upper cases the letters
@@ -41,10 +42,14 @@ void UCASE(char []);
 				}
 				
 				code[j] = b;
+			        	
 			}
 		}
 		
 		printf("The Decrypted Ceasar cipher message: %s\n", (code));
+		break;
+		    
+		        case 2:
 	    printf("this program shall now perform a substitution cipher\n\n");
 		
 	        char* ciphertext = "zebracowquitmdnhpgxfyjsklv";    // this is the cipher text which is referenced when encrypting
@@ -69,9 +74,11 @@ void UCASE(char []);
             UCASE(output);                                          // makes the output upper case
         printf("output: %s\n", output);                         // output the results
         printf("Decrypted this message: %s\n", code);
+
+printf("incorrect submission");
 	return 0;
 	}
-	
+	}
 
 	  void UCASE(char s[]) {                                  // function to make output upper case
 	    int U = 0;
