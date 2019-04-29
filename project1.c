@@ -1,27 +1,27 @@
 #include<stdio.h>
-	#include<string.h>
+#include<string.h>
 	
 
 	void UCASE(char []);
 	int main()
 	{
-		char code[1000], ln;
+		char code[1000], b;                                    // defining variables 
 		int j;
-		printf("This program performs Caesar cipher encryption and decrytion\nas well as substitution cipher encrytion adn decryption\n\n" );
-		printf("Please enter a message to encrypt with a Caesar cipher: ");
-		gets(code);
-		UCASE(code);
-		for(j = 0; code[j] != '\0'; ++j){
-			ln = code[j];
+		printf("This program performs Caesar cipher encryption and decrytion\nas well as substitution cipher encrytion and decryption\nPLEASE NOTE ALL WORDS ENTERED MANUALLY MUST BE IN LOWERCSASE\n\n" );
+		printf("Please enter a message to encrypt with a Caesar cipher: "); // general introduction to the program
+		gets(code);                                             // takes input to be encrypted
+		UCASE(code);                                            // upper cases the letters
+		for(j = 0; code[j] != '\0'; ++j){                       // loops to make full encrytion
+			b = code[j];
 			
-			if(ln >= 'A' && ln <= 'Z'){
-				ln = ln + 10;
+			if(b >= 'A' && b <= 'Z'){                         // encryption between A and P
+				b = b + 10;                                   // encryption key
 				
-				if(ln > 'Z'){
-					ln = ln - 'Z' + 'A' - 1;
+				if(b > 'Z'){
+					b = b - 'Z' + 'A' - 1;                    // encryption if the letter being encryted is in teh last 10 letters of the alphabet
 				}
 				
-				code[j] = ln;
+				code[j] = b;                                   
 			}
 		}
 		
@@ -31,55 +31,44 @@
 		gets(code);
 		UCASE(code);
 		for(j = 0; code[j] != '\0'; ++j){
-			ln = code[j];
+			b = code[j];
 			
-			if(ln >= 'A' && ln <= 'Z'){
-				ln = ln + 16;
+			if(b >= 'A' && b <= 'Z'){
+				b = b + 16;                                   // note 16, 16+10=26 thus a full rotation of the alphabet, decrypting the code
 				
-				if(ln > 'Z'){
-					ln = ln - 'Z' + 'A' - 1;
+				if(b > 'Z'){
+					b = b - 'Z' + 'A' - 1;
 				}
 				
-				code[j] = ln;
+				code[j] = b;
 			}
 		}
 		
 		printf("The Decrypted Ceasar cipher message: %s\n", (code));
 	printf("this program shall now perform a substitution cipher\n\n");
 		
-	    char* ciphertext = "qwertyuiopasdfghjklzxcvbnm";    // cipher lookup
+	    char* ciphertext = "zebracowquitmdnhpgxfyjsklv";    // this is the cipher text which is referenced when encrypting
 
-    char input[500];                                    // input buffer
+    char input[1500];                                   
     printf("Enter text: ");
-    fgets(input, sizeof(input), stdin);                 // safe input from user
-    input[strlen(input) - 1] = 0;                       // remove the \n (newline)
-    int count = strlen(input);                          // get the string length
+    fgets(input, sizeof(input), stdin);                     // input from user
+    input[strlen(input) - 1] = 0;                       
+    int count = strlen(input);                              // identifies the length of the string
 
-    char output[count];                                 // output string
-    for(int i = 0; i < count; i++) {                    // loop through characters in input
-        int index = ((int) input[i]) - 97;              // get the index in the cipher by subtracting 'a' (97) from the current character
+    char output[count];                                     // encrypted output
+    for(int i = 0; i < count; i++) {                        // loops the characters inputed to get a full encryption
+        int index = ((int) input[i]) - 97;                  // assigns new character by -97 (a) from input
         if(index < 0) {
-            output[i] = ' ';                            // if index < 0, put a space to account for spaces
+            output[i] = ' ';                                // if it is = 0 put a space
         }
         else {
-            output[i] = ciphertext[index];              // else, assign the output[i] to the ciphertext[index]
+            output[i] = ciphertext[index];                  // encrytion starts if it is !=0
         }
     }
-    output[count] = 0;                                  // null-terminate the string
-
-    printf("output: %s\n", output);                     // output the result
-
+    output[count] = 0;                                      // terminate the string
+    UCASE(output);                                          // makes the output upper case
+    printf("output: %s\n", output);                         // output the results
+    printf("Decrypted this message: %s\n", code);
 		return 0;
 	}
 	
-
-	void UCASE(char s[]) {
-	   int c = 0;
-	   
-	   while (s[c] != '\0') {
-	      if (s[c] >= 'a' && s[c] <= 'z') {
-	         s[c] = s[c] - 32;
-	      }
-	      c++;
-	   }
-	}
